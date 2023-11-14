@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+  backend:
+    build:
+      context: ./src/backend-placeholder
+      dockerfile: ./backend-placeholder/Dockerfile
+    image: "indusninja/placeholder-backend"
+    ports:
+      - "1080:80"
+      - "1443:443"
+  frontend:
+    build:
+      context: ./src/frontend-placeholder
+      dockerfile: ./Dockerfile
+    image: "indusninja/placeholder-frontend"
+    ports:
+      - "3000:3000"
+    links:
+      - "backend:be"
