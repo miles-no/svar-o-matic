@@ -24,7 +24,7 @@ namespace IO.Swagger.Models
     /// 
     /// </summary>
     [DataContract]
-    public partial class CV : IEquatable<CV>
+    public partial class PreviousResponse : IEquatable<PreviousResponse>
     { 
         /// <summary>
         /// Gets or Sets Id
@@ -48,11 +48,46 @@ namespace IO.Swagger.Models
         public long? Owner { get; set; }
 
         /// <summary>
-        /// Gets or Sets Modified
+        /// Gets or Sets OriginalSubmitter
         /// </summary>
 
-        [DataMember(Name="modified")]
-        public DateTime? Modified { get; set; }
+        [DataMember(Name="originalSubmitter")]
+        public long? OriginalSubmitter { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SubmittedOn
+        /// </summary>
+
+        [DataMember(Name="submittedOn")]
+        public DateTime? SubmittedOn { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SubmittedToKunde
+        /// </summary>
+
+        [DataMember(Name="submittedToKunde")]
+        public string SubmittedToKunde { get; set; }
+
+        /// <summary>
+        /// Gets or Sets LedToInterview
+        /// </summary>
+
+        [DataMember(Name="ledToInterview")]
+        public bool? LedToInterview { get; set; }
+
+        /// <summary>
+        /// Gets or Sets LedToOppdrag
+        /// </summary>
+
+        [DataMember(Name="ledToOppdrag")]
+        public bool? LedToOppdrag { get; set; }
+
+        /// <summary>
+        /// Gets or Sets IsInUse
+        /// </summary>
+
+        [DataMember(Name="isInUse")]
+        public bool? IsInUse { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -61,11 +96,16 @@ namespace IO.Swagger.Models
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class CV {\n");
+            sb.Append("class PreviousResponse {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Content: ").Append(Content).Append("\n");
             sb.Append("  Owner: ").Append(Owner).Append("\n");
-            sb.Append("  Modified: ").Append(Modified).Append("\n");
+            sb.Append("  OriginalSubmitter: ").Append(OriginalSubmitter).Append("\n");
+            sb.Append("  SubmittedOn: ").Append(SubmittedOn).Append("\n");
+            sb.Append("  SubmittedToKunde: ").Append(SubmittedToKunde).Append("\n");
+            sb.Append("  LedToInterview: ").Append(LedToInterview).Append("\n");
+            sb.Append("  LedToOppdrag: ").Append(LedToOppdrag).Append("\n");
+            sb.Append("  IsInUse: ").Append(IsInUse).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -88,15 +128,15 @@ namespace IO.Swagger.Models
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            return obj.GetType() == GetType() && Equals((CV)obj);
+            return obj.GetType() == GetType() && Equals((PreviousResponse)obj);
         }
 
         /// <summary>
-        /// Returns true if CV instances are equal
+        /// Returns true if PreviousResponse instances are equal
         /// </summary>
-        /// <param name="other">Instance of CV to be compared</param>
+        /// <param name="other">Instance of PreviousResponse to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(CV other)
+        public bool Equals(PreviousResponse other)
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
@@ -118,9 +158,34 @@ namespace IO.Swagger.Models
                     Owner.Equals(other.Owner)
                 ) && 
                 (
-                    Modified == other.Modified ||
-                    Modified != null &&
-                    Modified.Equals(other.Modified)
+                    OriginalSubmitter == other.OriginalSubmitter ||
+                    OriginalSubmitter != null &&
+                    OriginalSubmitter.Equals(other.OriginalSubmitter)
+                ) && 
+                (
+                    SubmittedOn == other.SubmittedOn ||
+                    SubmittedOn != null &&
+                    SubmittedOn.Equals(other.SubmittedOn)
+                ) && 
+                (
+                    SubmittedToKunde == other.SubmittedToKunde ||
+                    SubmittedToKunde != null &&
+                    SubmittedToKunde.Equals(other.SubmittedToKunde)
+                ) && 
+                (
+                    LedToInterview == other.LedToInterview ||
+                    LedToInterview != null &&
+                    LedToInterview.Equals(other.LedToInterview)
+                ) && 
+                (
+                    LedToOppdrag == other.LedToOppdrag ||
+                    LedToOppdrag != null &&
+                    LedToOppdrag.Equals(other.LedToOppdrag)
+                ) && 
+                (
+                    IsInUse == other.IsInUse ||
+                    IsInUse != null &&
+                    IsInUse.Equals(other.IsInUse)
                 );
         }
 
@@ -140,8 +205,18 @@ namespace IO.Swagger.Models
                     hashCode = hashCode * 59 + Content.GetHashCode();
                     if (Owner != null)
                     hashCode = hashCode * 59 + Owner.GetHashCode();
-                    if (Modified != null)
-                    hashCode = hashCode * 59 + Modified.GetHashCode();
+                    if (OriginalSubmitter != null)
+                    hashCode = hashCode * 59 + OriginalSubmitter.GetHashCode();
+                    if (SubmittedOn != null)
+                    hashCode = hashCode * 59 + SubmittedOn.GetHashCode();
+                    if (SubmittedToKunde != null)
+                    hashCode = hashCode * 59 + SubmittedToKunde.GetHashCode();
+                    if (LedToInterview != null)
+                    hashCode = hashCode * 59 + LedToInterview.GetHashCode();
+                    if (LedToOppdrag != null)
+                    hashCode = hashCode * 59 + LedToOppdrag.GetHashCode();
+                    if (IsInUse != null)
+                    hashCode = hashCode * 59 + IsInUse.GetHashCode();
                 return hashCode;
             }
         }
@@ -149,12 +224,12 @@ namespace IO.Swagger.Models
         #region Operators
         #pragma warning disable 1591
 
-        public static bool operator ==(CV left, CV right)
+        public static bool operator ==(PreviousResponse left, PreviousResponse right)
         {
             return Equals(left, right);
         }
 
-        public static bool operator !=(CV left, CV right)
+        public static bool operator !=(PreviousResponse left, PreviousResponse right)
         {
             return !Equals(left, right);
         }

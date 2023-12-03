@@ -24,35 +24,21 @@ namespace IO.Swagger.Models
     /// 
     /// </summary>
     [DataContract]
-    public partial class CV : IEquatable<CV>
+    public partial class InquiryRequest : IEquatable<InquiryRequest>
     { 
         /// <summary>
-        /// Gets or Sets Id
+        /// Gets or Sets Kunde
         /// </summary>
 
-        [DataMember(Name="Id")]
-        public long? Id { get; set; }
+        [DataMember(Name="kunde")]
+        public string Kunde { get; set; }
 
         /// <summary>
-        /// Gets or Sets Content
+        /// Gets or Sets RecievedOn
         /// </summary>
 
-        [DataMember(Name="content")]
-        public byte[] Content { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Owner
-        /// </summary>
-
-        [DataMember(Name="owner")]
-        public long? Owner { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Modified
-        /// </summary>
-
-        [DataMember(Name="modified")]
-        public DateTime? Modified { get; set; }
+        [DataMember(Name="recievedOn")]
+        public DateTime? RecievedOn { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -61,11 +47,9 @@ namespace IO.Swagger.Models
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class CV {\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Content: ").Append(Content).Append("\n");
-            sb.Append("  Owner: ").Append(Owner).Append("\n");
-            sb.Append("  Modified: ").Append(Modified).Append("\n");
+            sb.Append("class InquiryRequest {\n");
+            sb.Append("  Kunde: ").Append(Kunde).Append("\n");
+            sb.Append("  RecievedOn: ").Append(RecievedOn).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -88,39 +72,29 @@ namespace IO.Swagger.Models
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            return obj.GetType() == GetType() && Equals((CV)obj);
+            return obj.GetType() == GetType() && Equals((InquiryRequest)obj);
         }
 
         /// <summary>
-        /// Returns true if CV instances are equal
+        /// Returns true if InquiryRequest instances are equal
         /// </summary>
-        /// <param name="other">Instance of CV to be compared</param>
+        /// <param name="other">Instance of InquiryRequest to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(CV other)
+        public bool Equals(InquiryRequest other)
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
 
             return 
                 (
-                    Id == other.Id ||
-                    Id != null &&
-                    Id.Equals(other.Id)
+                    Kunde == other.Kunde ||
+                    Kunde != null &&
+                    Kunde.Equals(other.Kunde)
                 ) && 
                 (
-                    Content == other.Content ||
-                    Content != null &&
-                    Content.Equals(other.Content)
-                ) && 
-                (
-                    Owner == other.Owner ||
-                    Owner != null &&
-                    Owner.Equals(other.Owner)
-                ) && 
-                (
-                    Modified == other.Modified ||
-                    Modified != null &&
-                    Modified.Equals(other.Modified)
+                    RecievedOn == other.RecievedOn ||
+                    RecievedOn != null &&
+                    RecievedOn.Equals(other.RecievedOn)
                 );
         }
 
@@ -134,14 +108,10 @@ namespace IO.Swagger.Models
             {
                 var hashCode = 41;
                 // Suitable nullity checks etc, of course :)
-                    if (Id != null)
-                    hashCode = hashCode * 59 + Id.GetHashCode();
-                    if (Content != null)
-                    hashCode = hashCode * 59 + Content.GetHashCode();
-                    if (Owner != null)
-                    hashCode = hashCode * 59 + Owner.GetHashCode();
-                    if (Modified != null)
-                    hashCode = hashCode * 59 + Modified.GetHashCode();
+                    if (Kunde != null)
+                    hashCode = hashCode * 59 + Kunde.GetHashCode();
+                    if (RecievedOn != null)
+                    hashCode = hashCode * 59 + RecievedOn.GetHashCode();
                 return hashCode;
             }
         }
@@ -149,12 +119,12 @@ namespace IO.Swagger.Models
         #region Operators
         #pragma warning disable 1591
 
-        public static bool operator ==(CV left, CV right)
+        public static bool operator ==(InquiryRequest left, InquiryRequest right)
         {
             return Equals(left, right);
         }
 
-        public static bool operator !=(CV left, CV right)
+        public static bool operator !=(InquiryRequest left, InquiryRequest right)
         {
             return !Equals(left, right);
         }

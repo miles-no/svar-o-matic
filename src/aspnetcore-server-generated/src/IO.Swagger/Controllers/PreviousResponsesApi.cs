@@ -25,22 +25,22 @@ namespace IO.Swagger.Controllers
     /// 
     /// </summary>
     [ApiController]
-    public class CvApiController : ControllerBase
+    public class PreviousResponsesApiController : ControllerBase
     { 
         /// <summary>
-        /// Add a new CV to a consultant profile
+        /// Add a previous skjema to a consultant profile
         /// </summary>
-        /// <remarks>Add a new CV to a consultant profile</remarks>
-        /// <param name="body">Add a new CV for a consultant in the app</param>
+        /// <remarks>Add an skjema to the profile that the consultant has previously used in an application.</remarks>
+        /// <param name="body">A previous skjema that the consultant has used</param>
         /// <param name="consultantId">Id of the consultant that the addition is related to</param>
         /// <response code="200">Successful operation</response>
         /// <response code="405">Invalid input</response>
         [HttpPost]
-        [Route("/cv/{consultantId}/add")]
+        [Route("/previousResponses/{consultantId}/add")]
         [ValidateModelState]
-        [SwaggerOperation("AddCV")]
+        [SwaggerOperation("AddPreviousSkjema")]
         [SwaggerResponse(statusCode: 200, type: typeof(ModelApiResponse), description: "Successful operation")]
-        public virtual IActionResult AddCV([FromBody]Object body, [FromRoute][Required]long? consultantId)
+        public virtual IActionResult AddPreviousSkjema([FromBody]PreviousResponseRequest body, [FromRoute][Required]long? consultantId)
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(200, default(ModelApiResponse));
@@ -81,6 +81,40 @@ namespace IO.Swagger.Controllers
                         var example = exampleJson != null
                         ? JsonConvert.DeserializeObject<List<Object>>(exampleJson)
                         : default(List<Object>);            //TODO: Change the data returned
+            return new ObjectResult(example);
+        }
+
+        /// <summary>
+        /// Toggle the usage of a document for a consultant to generate answers
+        /// </summary>
+        /// <remarks>Toggle the usage of a document for a consultant to generate answers</remarks>
+        /// <param name="body">A previous skjema that the consultant has used</param>
+        /// <param name="consultantId">Id of the consultant that the document status is limited to</param>
+        /// <response code="200">successful operation</response>
+        /// <response code="400">Invalid ID supplied</response>
+        /// <response code="404">Document not found</response>
+        [HttpGet]
+        [Route("/toggleUsage/{consultantId}")]
+        [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
+        [ValidateModelState]
+        [SwaggerOperation("ToggleDocUsageForConsultant")]
+        [SwaggerResponse(statusCode: 200, type: typeof(ModelApiResponse), description: "successful operation")]
+        public virtual IActionResult ToggleDocUsageForConsultant([FromBody]DocUsageRequest body, [FromRoute][Required]long? consultantId)
+        { 
+            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(200, default(ModelApiResponse));
+
+            //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(400);
+
+            //TODO: Uncomment the next line to return response 404 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(404);
+            string exampleJson = null;
+            exampleJson = "{\n  \"code\" : 0,\n  \"type\" : \"type\",\n  \"message\" : \"message\"\n}";
+            
+                        var example = exampleJson != null
+                        ? JsonConvert.DeserializeObject<ModelApiResponse>(exampleJson)
+                        : default(ModelApiResponse);            //TODO: Change the data returned
             return new ObjectResult(example);
         }
     }

@@ -24,35 +24,28 @@ namespace IO.Swagger.Models
     /// 
     /// </summary>
     [DataContract]
-    public partial class CV : IEquatable<CV>
+    public partial class Svar : IEquatable<Svar>
     { 
         /// <summary>
-        /// Gets or Sets Id
+        /// Gets or Sets KravId
         /// </summary>
 
-        [DataMember(Name="Id")]
-        public long? Id { get; set; }
+        [DataMember(Name="kravId")]
+        public long? KravId { get; set; }
 
         /// <summary>
-        /// Gets or Sets Content
+        /// Gets or Sets Text
         /// </summary>
 
-        [DataMember(Name="content")]
-        public byte[] Content { get; set; }
+        [DataMember(Name="text")]
+        public string Text { get; set; }
 
         /// <summary>
-        /// Gets or Sets Owner
+        /// Gets or Sets GeneratedOn
         /// </summary>
 
-        [DataMember(Name="owner")]
-        public long? Owner { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Modified
-        /// </summary>
-
-        [DataMember(Name="modified")]
-        public DateTime? Modified { get; set; }
+        [DataMember(Name="generatedOn")]
+        public DateTime? GeneratedOn { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -61,11 +54,10 @@ namespace IO.Swagger.Models
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class CV {\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Content: ").Append(Content).Append("\n");
-            sb.Append("  Owner: ").Append(Owner).Append("\n");
-            sb.Append("  Modified: ").Append(Modified).Append("\n");
+            sb.Append("class Svar {\n");
+            sb.Append("  KravId: ").Append(KravId).Append("\n");
+            sb.Append("  Text: ").Append(Text).Append("\n");
+            sb.Append("  GeneratedOn: ").Append(GeneratedOn).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -88,39 +80,34 @@ namespace IO.Swagger.Models
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            return obj.GetType() == GetType() && Equals((CV)obj);
+            return obj.GetType() == GetType() && Equals((Svar)obj);
         }
 
         /// <summary>
-        /// Returns true if CV instances are equal
+        /// Returns true if Svar instances are equal
         /// </summary>
-        /// <param name="other">Instance of CV to be compared</param>
+        /// <param name="other">Instance of Svar to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(CV other)
+        public bool Equals(Svar other)
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
 
             return 
                 (
-                    Id == other.Id ||
-                    Id != null &&
-                    Id.Equals(other.Id)
+                    KravId == other.KravId ||
+                    KravId != null &&
+                    KravId.Equals(other.KravId)
                 ) && 
                 (
-                    Content == other.Content ||
-                    Content != null &&
-                    Content.Equals(other.Content)
+                    Text == other.Text ||
+                    Text != null &&
+                    Text.Equals(other.Text)
                 ) && 
                 (
-                    Owner == other.Owner ||
-                    Owner != null &&
-                    Owner.Equals(other.Owner)
-                ) && 
-                (
-                    Modified == other.Modified ||
-                    Modified != null &&
-                    Modified.Equals(other.Modified)
+                    GeneratedOn == other.GeneratedOn ||
+                    GeneratedOn != null &&
+                    GeneratedOn.Equals(other.GeneratedOn)
                 );
         }
 
@@ -134,14 +121,12 @@ namespace IO.Swagger.Models
             {
                 var hashCode = 41;
                 // Suitable nullity checks etc, of course :)
-                    if (Id != null)
-                    hashCode = hashCode * 59 + Id.GetHashCode();
-                    if (Content != null)
-                    hashCode = hashCode * 59 + Content.GetHashCode();
-                    if (Owner != null)
-                    hashCode = hashCode * 59 + Owner.GetHashCode();
-                    if (Modified != null)
-                    hashCode = hashCode * 59 + Modified.GetHashCode();
+                    if (KravId != null)
+                    hashCode = hashCode * 59 + KravId.GetHashCode();
+                    if (Text != null)
+                    hashCode = hashCode * 59 + Text.GetHashCode();
+                    if (GeneratedOn != null)
+                    hashCode = hashCode * 59 + GeneratedOn.GetHashCode();
                 return hashCode;
             }
         }
@@ -149,12 +134,12 @@ namespace IO.Swagger.Models
         #region Operators
         #pragma warning disable 1591
 
-        public static bool operator ==(CV left, CV right)
+        public static bool operator ==(Svar left, Svar right)
         {
             return Equals(left, right);
         }
 
-        public static bool operator !=(CV left, CV right)
+        public static bool operator !=(Svar left, Svar right)
         {
             return !Equals(left, right);
         }

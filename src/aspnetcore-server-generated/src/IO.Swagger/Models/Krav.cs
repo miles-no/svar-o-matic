@@ -24,7 +24,7 @@ namespace IO.Swagger.Models
     /// 
     /// </summary>
     [DataContract]
-    public partial class CV : IEquatable<CV>
+    public partial class Krav : IEquatable<Krav>
     { 
         /// <summary>
         /// Gets or Sets Id
@@ -34,25 +34,25 @@ namespace IO.Swagger.Models
         public long? Id { get; set; }
 
         /// <summary>
-        /// Gets or Sets Content
+        /// Gets or Sets InquiryId
         /// </summary>
 
-        [DataMember(Name="content")]
-        public byte[] Content { get; set; }
+        [DataMember(Name="inquiryId")]
+        public long? InquiryId { get; set; }
 
         /// <summary>
-        /// Gets or Sets Owner
+        /// Gets or Sets Text
         /// </summary>
 
-        [DataMember(Name="owner")]
-        public long? Owner { get; set; }
+        [DataMember(Name="text")]
+        public string Text { get; set; }
 
         /// <summary>
-        /// Gets or Sets Modified
+        /// Gets or Sets IsMustHave
         /// </summary>
 
-        [DataMember(Name="modified")]
-        public DateTime? Modified { get; set; }
+        [DataMember(Name="isMustHave")]
+        public bool? IsMustHave { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -61,11 +61,11 @@ namespace IO.Swagger.Models
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class CV {\n");
+            sb.Append("class Krav {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Content: ").Append(Content).Append("\n");
-            sb.Append("  Owner: ").Append(Owner).Append("\n");
-            sb.Append("  Modified: ").Append(Modified).Append("\n");
+            sb.Append("  InquiryId: ").Append(InquiryId).Append("\n");
+            sb.Append("  Text: ").Append(Text).Append("\n");
+            sb.Append("  IsMustHave: ").Append(IsMustHave).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -88,15 +88,15 @@ namespace IO.Swagger.Models
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            return obj.GetType() == GetType() && Equals((CV)obj);
+            return obj.GetType() == GetType() && Equals((Krav)obj);
         }
 
         /// <summary>
-        /// Returns true if CV instances are equal
+        /// Returns true if Krav instances are equal
         /// </summary>
-        /// <param name="other">Instance of CV to be compared</param>
+        /// <param name="other">Instance of Krav to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(CV other)
+        public bool Equals(Krav other)
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
@@ -108,19 +108,19 @@ namespace IO.Swagger.Models
                     Id.Equals(other.Id)
                 ) && 
                 (
-                    Content == other.Content ||
-                    Content != null &&
-                    Content.Equals(other.Content)
+                    InquiryId == other.InquiryId ||
+                    InquiryId != null &&
+                    InquiryId.Equals(other.InquiryId)
                 ) && 
                 (
-                    Owner == other.Owner ||
-                    Owner != null &&
-                    Owner.Equals(other.Owner)
+                    Text == other.Text ||
+                    Text != null &&
+                    Text.Equals(other.Text)
                 ) && 
                 (
-                    Modified == other.Modified ||
-                    Modified != null &&
-                    Modified.Equals(other.Modified)
+                    IsMustHave == other.IsMustHave ||
+                    IsMustHave != null &&
+                    IsMustHave.Equals(other.IsMustHave)
                 );
         }
 
@@ -136,12 +136,12 @@ namespace IO.Swagger.Models
                 // Suitable nullity checks etc, of course :)
                     if (Id != null)
                     hashCode = hashCode * 59 + Id.GetHashCode();
-                    if (Content != null)
-                    hashCode = hashCode * 59 + Content.GetHashCode();
-                    if (Owner != null)
-                    hashCode = hashCode * 59 + Owner.GetHashCode();
-                    if (Modified != null)
-                    hashCode = hashCode * 59 + Modified.GetHashCode();
+                    if (InquiryId != null)
+                    hashCode = hashCode * 59 + InquiryId.GetHashCode();
+                    if (Text != null)
+                    hashCode = hashCode * 59 + Text.GetHashCode();
+                    if (IsMustHave != null)
+                    hashCode = hashCode * 59 + IsMustHave.GetHashCode();
                 return hashCode;
             }
         }
@@ -149,12 +149,12 @@ namespace IO.Swagger.Models
         #region Operators
         #pragma warning disable 1591
 
-        public static bool operator ==(CV left, CV right)
+        public static bool operator ==(Krav left, Krav right)
         {
             return Equals(left, right);
         }
 
-        public static bool operator !=(CV left, CV right)
+        public static bool operator !=(Krav left, Krav right)
         {
             return !Equals(left, right);
         }

@@ -24,7 +24,7 @@ namespace IO.Swagger.Models
     /// 
     /// </summary>
     [DataContract]
-    public partial class CV : IEquatable<CV>
+    public partial class DocUsageRequest : IEquatable<DocUsageRequest>
     { 
         /// <summary>
         /// Gets or Sets Id
@@ -34,25 +34,18 @@ namespace IO.Swagger.Models
         public long? Id { get; set; }
 
         /// <summary>
-        /// Gets or Sets Content
+        /// Gets or Sets Type
         /// </summary>
 
-        [DataMember(Name="content")]
-        public byte[] Content { get; set; }
+        [DataMember(Name="type")]
+        public string Type { get; set; }
 
         /// <summary>
-        /// Gets or Sets Owner
+        /// Gets or Sets IsInUse
         /// </summary>
 
-        [DataMember(Name="owner")]
-        public long? Owner { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Modified
-        /// </summary>
-
-        [DataMember(Name="modified")]
-        public DateTime? Modified { get; set; }
+        [DataMember(Name="isInUse")]
+        public bool? IsInUse { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -61,11 +54,10 @@ namespace IO.Swagger.Models
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class CV {\n");
+            sb.Append("class DocUsageRequest {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Content: ").Append(Content).Append("\n");
-            sb.Append("  Owner: ").Append(Owner).Append("\n");
-            sb.Append("  Modified: ").Append(Modified).Append("\n");
+            sb.Append("  Type: ").Append(Type).Append("\n");
+            sb.Append("  IsInUse: ").Append(IsInUse).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -88,15 +80,15 @@ namespace IO.Swagger.Models
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            return obj.GetType() == GetType() && Equals((CV)obj);
+            return obj.GetType() == GetType() && Equals((DocUsageRequest)obj);
         }
 
         /// <summary>
-        /// Returns true if CV instances are equal
+        /// Returns true if DocUsageRequest instances are equal
         /// </summary>
-        /// <param name="other">Instance of CV to be compared</param>
+        /// <param name="other">Instance of DocUsageRequest to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(CV other)
+        public bool Equals(DocUsageRequest other)
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
@@ -108,19 +100,14 @@ namespace IO.Swagger.Models
                     Id.Equals(other.Id)
                 ) && 
                 (
-                    Content == other.Content ||
-                    Content != null &&
-                    Content.Equals(other.Content)
+                    Type == other.Type ||
+                    Type != null &&
+                    Type.Equals(other.Type)
                 ) && 
                 (
-                    Owner == other.Owner ||
-                    Owner != null &&
-                    Owner.Equals(other.Owner)
-                ) && 
-                (
-                    Modified == other.Modified ||
-                    Modified != null &&
-                    Modified.Equals(other.Modified)
+                    IsInUse == other.IsInUse ||
+                    IsInUse != null &&
+                    IsInUse.Equals(other.IsInUse)
                 );
         }
 
@@ -136,12 +123,10 @@ namespace IO.Swagger.Models
                 // Suitable nullity checks etc, of course :)
                     if (Id != null)
                     hashCode = hashCode * 59 + Id.GetHashCode();
-                    if (Content != null)
-                    hashCode = hashCode * 59 + Content.GetHashCode();
-                    if (Owner != null)
-                    hashCode = hashCode * 59 + Owner.GetHashCode();
-                    if (Modified != null)
-                    hashCode = hashCode * 59 + Modified.GetHashCode();
+                    if (Type != null)
+                    hashCode = hashCode * 59 + Type.GetHashCode();
+                    if (IsInUse != null)
+                    hashCode = hashCode * 59 + IsInUse.GetHashCode();
                 return hashCode;
             }
         }
@@ -149,12 +134,12 @@ namespace IO.Swagger.Models
         #region Operators
         #pragma warning disable 1591
 
-        public static bool operator ==(CV left, CV right)
+        public static bool operator ==(DocUsageRequest left, DocUsageRequest right)
         {
             return Equals(left, right);
         }
 
-        public static bool operator !=(CV left, CV right)
+        public static bool operator !=(DocUsageRequest left, DocUsageRequest right)
         {
             return !Equals(left, right);
         }

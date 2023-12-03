@@ -25,22 +25,22 @@ namespace IO.Swagger.Controllers
     /// 
     /// </summary>
     [ApiController]
-    public class CvApiController : ControllerBase
+    public class InquiryApiController : ControllerBase
     { 
         /// <summary>
-        /// Add a new CV to a consultant profile
+        /// Create a new forespørsel for a consultant
         /// </summary>
-        /// <remarks>Add a new CV to a consultant profile</remarks>
-        /// <param name="body">Add a new CV for a consultant in the app</param>
+        /// <remarks>Create a new forespørsel for a consultant</remarks>
+        /// <param name="body">Data about an inquiry</param>
         /// <param name="consultantId">Id of the consultant that the addition is related to</param>
         /// <response code="200">Successful operation</response>
         /// <response code="405">Invalid input</response>
         [HttpPost]
-        [Route("/cv/{consultantId}/add")]
+        [Route("/inquiry/{consultantId}/add")]
         [ValidateModelState]
-        [SwaggerOperation("AddCV")]
+        [SwaggerOperation("CreateInquiry")]
         [SwaggerResponse(statusCode: 200, type: typeof(ModelApiResponse), description: "Successful operation")]
-        public virtual IActionResult AddCV([FromBody]Object body, [FromRoute][Required]long? consultantId)
+        public virtual IActionResult CreateInquiry([FromBody]InquiryRequest body, [FromRoute][Required]long? consultantId)
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(200, default(ModelApiResponse));
@@ -57,30 +57,31 @@ namespace IO.Swagger.Controllers
         }
 
         /// <summary>
-        /// Finds all CVs, skjemaer and style-guides applicable for a consultant
+        /// Generate answers for a forespørsel
         /// </summary>
-        /// <remarks>Multiple docs (CV, skjema and/or style guide) values can be provided with comma separated strings</remarks>
-        /// <param name="consultantId">Id of the consultant that the search is limited to</param>
-        /// <response code="200">successful operation</response>
-        /// <response code="400">Invalid status value</response>
-        [HttpGet]
-        [Route("/docsForConsultant/{consultantId}/get")]
+        /// <remarks>Generate answers for a forespørsel</remarks>
+        /// <param name="consultantId">Id of the consultant that the request is related to</param>
+        /// <param name="inquiryId">Id of the forespørsel that the request is related to</param>
+        /// <response code="200">Successful operation</response>
+        /// <response code="405">Invalid input</response>
+        [HttpPost]
+        [Route("/inquiry/{consultantId}/{inquiryId}/generateAnswers")]
         [ValidateModelState]
-        [SwaggerOperation("FindDocsForConsultant")]
-        [SwaggerResponse(statusCode: 200, type: typeof(List<Object>), description: "successful operation")]
-        public virtual IActionResult FindDocsForConsultant([FromRoute][Required]long? consultantId)
+        [SwaggerOperation("GenerateAnswersForInquiry")]
+        [SwaggerResponse(statusCode: 200, type: typeof(ModelApiResponse), description: "Successful operation")]
+        public virtual IActionResult GenerateAnswersForInquiry([FromRoute][Required]long? consultantId, [FromRoute][Required]long? inquiryId)
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(List<Object>));
+            // return StatusCode(200, default(ModelApiResponse));
 
-            //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400);
+            //TODO: Uncomment the next line to return response 405 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(405);
             string exampleJson = null;
-            exampleJson = "[ \"\", \"\" ]";
+            exampleJson = "{\n  \"code\" : 0,\n  \"type\" : \"type\",\n  \"message\" : \"message\"\n}";
             
                         var example = exampleJson != null
-                        ? JsonConvert.DeserializeObject<List<Object>>(exampleJson)
-                        : default(List<Object>);            //TODO: Change the data returned
+                        ? JsonConvert.DeserializeObject<ModelApiResponse>(exampleJson)
+                        : default(ModelApiResponse);            //TODO: Change the data returned
             return new ObjectResult(example);
         }
     }

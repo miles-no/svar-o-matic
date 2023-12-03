@@ -25,37 +25,8 @@ namespace IO.Swagger.Controllers
     /// 
     /// </summary>
     [ApiController]
-    public class CvApiController : ControllerBase
+    public class ConsultantApiController : ControllerBase
     { 
-        /// <summary>
-        /// Add a new CV to a consultant profile
-        /// </summary>
-        /// <remarks>Add a new CV to a consultant profile</remarks>
-        /// <param name="body">Add a new CV for a consultant in the app</param>
-        /// <param name="consultantId">Id of the consultant that the addition is related to</param>
-        /// <response code="200">Successful operation</response>
-        /// <response code="405">Invalid input</response>
-        [HttpPost]
-        [Route("/cv/{consultantId}/add")]
-        [ValidateModelState]
-        [SwaggerOperation("AddCV")]
-        [SwaggerResponse(statusCode: 200, type: typeof(ModelApiResponse), description: "Successful operation")]
-        public virtual IActionResult AddCV([FromBody]Object body, [FromRoute][Required]long? consultantId)
-        { 
-            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(ModelApiResponse));
-
-            //TODO: Uncomment the next line to return response 405 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(405);
-            string exampleJson = null;
-            exampleJson = "{\n  \"code\" : 0,\n  \"type\" : \"type\",\n  \"message\" : \"message\"\n}";
-            
-                        var example = exampleJson != null
-                        ? JsonConvert.DeserializeObject<ModelApiResponse>(exampleJson)
-                        : default(ModelApiResponse);            //TODO: Change the data returned
-            return new ObjectResult(example);
-        }
-
         /// <summary>
         /// Finds all CVs, skjemaer and style-guides applicable for a consultant
         /// </summary>
