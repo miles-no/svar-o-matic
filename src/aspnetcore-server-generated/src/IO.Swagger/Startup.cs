@@ -106,7 +106,7 @@ namespace IO.Swagger
             app.UseRouting();
 
             //TODO: Uncomment this if you need wwwroot folder
-            // app.UseStaticFiles();
+            app.UseStaticFiles();
 
             app.UseAuthorization();
 
@@ -114,10 +114,10 @@ namespace IO.Swagger
             app.UseSwaggerUI(c =>
             {
                 //TODO: Either use the SwaggerGen generated Swagger contract (generated from C# classes)
-                c.SwaggerEndpoint("/swagger/1.0.11/swagger.json", "Swagger - Svar-o-Matic");
+                //c.SwaggerEndpoint("/swagger/1.0.11/swagger.json", "Swagger - Svar-o-Matic");
 
                 //TODO: Or alternatively use the original Swagger contract that's included in the static files
-                // c.SwaggerEndpoint("/swagger-original.json", "Swagger - Svar-o-Matic Original");
+                c.SwaggerEndpoint("/swagger-original.json", "Swagger - Svar-o-Matic Original");
             });
 
             //TODO: Use Https Redirection
