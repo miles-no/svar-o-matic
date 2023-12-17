@@ -18,7 +18,7 @@ namespace IO.Swagger.Models
     /// 
     /// </summary>
     [DataContract]
-    public partial class Krav : IEquatable<Krav>
+    public partial class Consultant : IEquatable<Consultant>
     { 
         /// <summary>
         /// Gets or Sets Id
@@ -28,25 +28,25 @@ namespace IO.Swagger.Models
         public long? Id { get; set; }
 
         /// <summary>
-        /// Gets or Sets InquiryId
+        /// Gets or Sets FirstName
         /// </summary>
 
-        [DataMember(Name="inquiryId")]
-        public long? InquiryId { get; set; }
+        [DataMember(Name="firstName")]
+        public string FirstName { get; set; }
 
         /// <summary>
-        /// Gets or Sets Text
+        /// Gets or Sets LastName
         /// </summary>
 
-        [DataMember(Name="text")]
-        public string Text { get; set; }
+        [DataMember(Name="lastName")]
+        public string LastName { get; set; }
 
         /// <summary>
-        /// Gets or Sets IsMustHave
+        /// Gets or Sets Email
         /// </summary>
 
-        [DataMember(Name="isMustHave")]
-        public bool? IsMustHave { get; set; }
+        [DataMember(Name="email")]
+        public string Email { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -55,11 +55,11 @@ namespace IO.Swagger.Models
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class Krav {\n");
+            sb.Append("class CV {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  InquiryId: ").Append(InquiryId).Append("\n");
-            sb.Append("  Text: ").Append(Text).Append("\n");
-            sb.Append("  IsMustHave: ").Append(IsMustHave).Append("\n");
+            sb.Append("  First Name: ").Append(FirstName).Append("\n");
+            sb.Append("  Last Name: ").Append(LastName).Append("\n");
+            sb.Append("  email: ").Append(Email).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -82,15 +82,15 @@ namespace IO.Swagger.Models
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            return obj.GetType() == GetType() && Equals((Krav)obj);
+            return obj.GetType() == GetType() && Equals((Consultant)obj);
         }
 
         /// <summary>
-        /// Returns true if Krav instances are equal
+        /// Returns true if Consultant instances are equal
         /// </summary>
-        /// <param name="other">Instance of Krav to be compared</param>
+        /// <param name="other">Instance of Consultant to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(Krav other)
+        public bool Equals(Consultant other)
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
@@ -102,19 +102,19 @@ namespace IO.Swagger.Models
                     Id.Equals(other.Id)
                 ) && 
                 (
-                    InquiryId == other.InquiryId ||
-                    InquiryId != null &&
-                    InquiryId.Equals(other.InquiryId)
+                    FirstName == other.FirstName ||
+                    FirstName != null &&
+                    FirstName.Equals(other.FirstName)
                 ) && 
                 (
-                    Text == other.Text ||
-                    Text != null &&
-                    Text.Equals(other.Text)
+                    LastName == other.LastName ||
+                    LastName != null &&
+                    LastName.Equals(other.LastName)
                 ) && 
                 (
-                    IsMustHave == other.IsMustHave ||
-                    IsMustHave != null &&
-                    IsMustHave.Equals(other.IsMustHave)
+                    Email == other.Email ||
+                    Email != null &&
+                    Email.Equals(other.Email)
                 );
         }
 
@@ -130,12 +130,12 @@ namespace IO.Swagger.Models
                 // Suitable nullity checks etc, of course :)
                     if (Id != null)
                     hashCode = hashCode * 59 + Id.GetHashCode();
-                    if (InquiryId != null)
-                    hashCode = hashCode * 59 + InquiryId.GetHashCode();
-                    if (Text != null)
-                    hashCode = hashCode * 59 + Text.GetHashCode();
-                    if (IsMustHave != null)
-                    hashCode = hashCode * 59 + IsMustHave.GetHashCode();
+                    if (FirstName != null)
+                    hashCode = hashCode * 59 + FirstName.GetHashCode();
+                    if (LastName != null)
+                    hashCode = hashCode * 59 + LastName.GetHashCode();
+                    if (Email != null)
+                    hashCode = hashCode * 59 + Email.GetHashCode();
                 return hashCode;
             }
         }
@@ -143,12 +143,12 @@ namespace IO.Swagger.Models
         #region Operators
         #pragma warning disable 1591
 
-        public static bool operator ==(Krav left, Krav right)
+        public static bool operator ==(Consultant left, Consultant right)
         {
             return Equals(left, right);
         }
 
-        public static bool operator !=(Krav left, Krav right)
+        public static bool operator !=(Consultant left, Consultant right)
         {
             return !Equals(left, right);
         }

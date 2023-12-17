@@ -11,12 +11,9 @@ using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
-using Swashbuckle.AspNetCore.SwaggerGen;
 using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
 using IO.Swagger.Attributes;
-using IO.Swagger.Security;
-using Microsoft.AspNetCore.Authorization;
 using IO.Swagger.Models;
 
 namespace IO.Swagger.Controllers
@@ -26,7 +23,36 @@ namespace IO.Swagger.Controllers
     /// </summary>
     [ApiController]
     public class ConsultantApiController : ControllerBase
-    { 
+    {
+        /// <summary>
+        /// Get basic information about a consultant
+        /// </summary>
+        /// <remarks></remarks>
+        /// <response code="200">successful operation</response>
+        /// <response code="400">Invalid status value</response>
+        [HttpGet]
+        [Route("/info/get")]
+        [ValidateModelState]
+        [SwaggerOperation("GetConsultantInfo")]
+        [SwaggerResponse(statusCode: 200, type: typeof(Object), description: "successful operation")]
+        public virtual IActionResult GetConsultantInfo()
+        {
+            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(200, default(List<Object>));
+
+            //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(400);
+
+            var example = new Consultant
+            {
+                Id = 13,
+                FirstName = "John",
+                LastName = "Doe",
+                Email = @"john.doe@miles.no"
+            };
+            return new ObjectResult(example);
+        }
+
         /// <summary>
         /// Finds all CVs, skjemaer and style-guides applicable for a consultant
         /// </summary>
