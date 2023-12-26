@@ -15,6 +15,7 @@ using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
 using SvarOMatic.Attributes;
 using SvarOMatic.Models;
+using SvarOMatic.Security;
 
 namespace SvarOMatic.Controllers
 { 
@@ -32,6 +33,7 @@ namespace SvarOMatic.Controllers
         /// <response code="400">Invalid status value</response>
         [HttpGet]
         [Route("/info/get")]
+        [Authorize]
         [ValidateModelState]
         [SwaggerOperation("GetConsultantInfo")]
         [SwaggerResponse(statusCode: 200, type: typeof(Object), description: "successful operation")]
@@ -43,12 +45,13 @@ namespace SvarOMatic.Controllers
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(400);
 
+            var user = (AuthorizedUser)HttpContext.Items["User"];
             var example = new Consultant
             {
                 Id = 13,
-                FirstName = "John",
-                LastName = "Doe",
-                Email = @"john.doe@miles.no"
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email
             };
             return new ObjectResult(example);
         }

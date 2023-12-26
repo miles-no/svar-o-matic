@@ -93,7 +93,6 @@ namespace SvarOMatic.Controllers
         /// <response code="404">Document not found</response>
         [HttpGet]
         [Route("/toggleUsage/{consultantId}")]
-        [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("ToggleDocUsageForConsultant")]
         [SwaggerResponse(statusCode: 200, type: typeof(ModelApiResponse), description: "successful operation")]

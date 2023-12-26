@@ -21,6 +21,7 @@ using Newtonsoft.Json.Serialization;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Identity.Web;
 using SvarOMatic.Filters;
+using SvarOMatic.Security;
 
 namespace SvarOMatic
 {
@@ -64,8 +65,8 @@ namespace SvarOMatic
                 })
                 .AddXmlSerializerFormatters();
 
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddMicrosoftIdentityWebApi(Configuration.GetSection("AzureAd"));
+            // services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            //    .AddMicrosoftIdentityWebApi(Configuration.GetSection("AzureAd"));
 
             services
                 .AddSwaggerGen(c =>
@@ -74,7 +75,7 @@ namespace SvarOMatic
                     {
                         Version = "1.0.11",
                         Title = "Swagger - Svar-o-Matic",
-                        Description = "Swagger - Svar-o-Matic (ASP.NET Core 7.0)",
+                        Description = "Swagger - Svar-o-Matic (ASP.NET Core 8.0)",
                         Contact = new OpenApiContact()
                         {
                            Name = "Swagger Codegen Contributors",
@@ -119,6 +120,12 @@ namespace SvarOMatic
 
             //TODO: Use Https Redirection
             // app.UseHttpsRedirection();
+
+            // custom jwt auth middleware
+            app.UseMiddleware<JwtClaimMiddleware>(
+                Configuration.GetValue<string>("AzureAd:Instance"),
+                Configuration.GetValue<string>("AzureAd:TenantId"),
+                Configuration.GetValue<string>("AzureAd:ClientId"));
 
             app.UseEndpoints(endpoints =>
             {
